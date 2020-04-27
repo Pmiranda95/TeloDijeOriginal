@@ -45,11 +45,15 @@ class Map extends React.Component {
       }
       onMarkerClick = (placeId) => {
         console.log('hola')
-       // this.props.history.push(`/details/${placeId}`)
+        this.props.history.push(`/details`)
        //this.props.getDetails(placeId)
        //this.props.getPlaces('hotel',this.state.lat,this.state.lng)
-      }
+      } 
 
+      componentDidMout(){
+        console.log("resultados"+this.props.resultados)
+        console.log("detalles"+this.props.details)
+      }
       
     render(){
         const { lat, lng } = this.state;
@@ -98,11 +102,11 @@ class Map extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   getPlaces: bindActionCreators(getPlaces, dispatch),
-  getDetails: bindActionCreators(getDetails, dispatch)
 })
 
 const mapStateToProps = state => ({
     resultados: state.apiGoogleMaps.resultados,
+    //details: state.apiGoogleMaps.details
 })
 
-export default withScriptjs(withGoogleMap(connect(mapStateToProps,mapDispatchToProps)(Map)));
+export default withRouter(withScriptjs(withGoogleMap(connect(mapStateToProps,mapDispatchToProps)(Map))));

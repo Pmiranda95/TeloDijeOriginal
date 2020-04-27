@@ -8,8 +8,8 @@ import Detail from './componentes/Detail'
   render(){
     return (
         <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/details/{name}"  component={Detail} />
+          <Route exact path="/home" component={Home}/>
+          <Route exact path="/details"  component={Detail} />
         </Switch>
     );  
   }
